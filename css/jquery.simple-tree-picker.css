@@ -1,0 +1,56 @@
+/*! $.simpleTreePicker CSS
+ @version 1.0.0
+ @author Alex Meub
+ @license WTFPL http://www.wtfpl.net/about/
+*/
+
+ul.simple-tree{
+    list-style: none;
+    margin: 10px;
+    padding: 0;
+}
+ul.simple-tree ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul.simple-tree li {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  text-align: left;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+ul.simple-tree input {
+    cursor:pointer;
+    margin: 0 5px 0 0;
+}
+ul.simple-tree label {
+    cursor:pointer;
+}
+ul.simple-tree li ins.tree-icon {
+  display: inline-block;
+  text-decoration: none;
+  width: 18px;
+  height: 18px;
+  margin: 0 0 0 0;
+  padding: 0;
+}
+ul.simple-tree .subtree{
+  margin-left: 20px; display: block;
+}
+ul.simple-tree .right-caret{
+  cursor:pointer;
+  background-repeat: no-repeat;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjIzOUMzNzdBRkJDMTFFM0FGQzRFQTlBODcxRTJDRDYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjIzOUMzNzhBRkJDMTFFM0FGQzRFQTlBODcxRTJDRDYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyMjM5QzM3NUFGQkMxMUUzQUZDNEVBOUE4NzFFMkNENiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMjM5QzM3NkFGQkMxMUUzQUZDNEVBOUE4NzFFMkNENiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgS/NmkAAACPSURBVHjaYvz//z8DNQATA5XA4DOIBZfEtDkLTYGUFhAvRJfLSoknyUUCQKwMxKyUes0KiGuBeCMQS1Ji0A8o7QnE+4HYghqBrQ7EO4A4BYjZKY01fiCeDcQKlBr0GYgTgfgmSdGPBkCaQXF+kpwwgkX7ViB2xGcIIYMuA3E7EAcD8XNCTmYczf0EAUCAAQCNGRissLe2JQAAAABJRU5ErkJggg==);
+}
+ul.simple-tree .right-down-caret{
+  cursor:pointer;
+  background-repeat: no-repeat;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Mzc0RTU3Q0JBRkJDMTFFMzg4NkI5OUYyRUUwRUE3MzMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Mzc0RTU3Q0NBRkJDMTFFMzg4NkI5OUYyRUUwRUE3MzMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozNzRFNTdDOUFGQkMxMUUzODg2Qjk5RjJFRTBFQTczMyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozNzRFNTdDQUFGQkMxMUUzODg2Qjk5RjJFRTBFQTczMyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqV9Tk4AAABZSURBVHjaYvz//z8DNQATA5XAMDaIBV3A1tYWl9oOIHY5fPiwCVEG4TGknFKvETSEGIOIMoSQQUQbgs8gkgzBZRDJhuCKNSUgvodD/VlcBjGOZlr6GQQQYABxgxHqOir28gAAAABJRU5ErkJggg==);
+}
