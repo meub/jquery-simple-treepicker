@@ -6,7 +6,17 @@
 	<link rel='stylesheet' href='css/jquery.simple-tree-picker.css'>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="js/jquery.simple-tree-picker.js"></script>
+    <script>
 
+        var stuff = JSON.parse('{"Number":"KI-125-25","Name":"Everything","Children":[{"Number":"WA-775-99","Name":"Upstairs","Children":[{"Number":"JI-105-09","Name":"East Wing","Children":[]},{"Number":"TR-883-66","Name":"West Wing","Children":[{"Number":"SS-002-99","Name":"Hello Service Area","Children":[{"Number":"JI-656-09","Name":"Goodbye Service Area","Children":[]},{"Number":"ZZ-654-66","Name":"Red Service Area2","Children":[]}]},{"Number":"SS-001-99","Name":"Orange Service Area","Children":[{"Number":"JI-898-09","Name":"Green Service Area","Children":[]},{"Number":"ZZ-493-66","Name":"Yellow Service Area","Children":[]}]}]}]},{"Number":"QQ-542-10","Name":"Basement","Children":[]}]}');
+
+        $(document).ready(function() {
+            $('.tree').simpleTreePicker( {
+                "tree": stuff
+            } );
+        });
+
+    </script>
     <style>
 
 /* Demo Styles */

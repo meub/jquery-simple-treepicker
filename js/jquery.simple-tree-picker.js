@@ -13,11 +13,8 @@
         Warn if duplicate
     -Angular Directive
 
- Fixes:
-    Indeterminate children stay that way
 
  */
-
 
 
 ;(function ( $, window, document, undefined ) {
@@ -58,7 +55,7 @@
                     t += '<ins class="tree-icon no-caret"></ins>';
 
                 // Make this a template!
-                t += '<input type="checkbox" name="checkbox-' + data.Number + '" id="checkbox-' + data.Number + '"><label for="checkbox-' + data.Number + '" id="' + data.Number + '">' + data.Name + ' Wee</label>';
+                t += '<input type="checkbox" name="checkbox-' + data.Number + '" id="checkbox-' + data.Number + '"><label for="checkbox-' + data.Number + '" id="' + data.Number + '">' + data.Name + '</label>';
                 i++;
                 t += buildSubTree(data.Children, t, i);
                 t += "</li>";
@@ -281,12 +278,3 @@
     };
 
 }(jQuery, window, document));
-
-
-var stuff = JSON.parse('{"Error":null,"Realm":"KI-125-25","TimeZone":{"Name":"Pacific Standard Time","Description":"(UTC-8:00) Pacific: Pacific Time (US & Canada)","BaseUtcOffset":-28800,"BasePstOffset":0,"Short":"PST","Enabled":true,"Tzid":"US/Pacific","Id":7},"Values":{},"Root":{"Number":"KI-125-25","Name":"Hotel Eleven","ParentNumber":"WL-635-11","Children":[{"Number":"WA-775-99","Name":"Check it Service Area","ParentNumber":"KI-125-25","Children":[{"Number":"JI-105-09","Name":"Nested Service Area","ParentNumber":"KI-125-23","Children":[]},{"Number":"TR-883-66","Name":"Nested Service Area2","ParentNumber":"WW-125-23","Children":[{"Number":"SS-002-99","Name":"Hello Service Area","ParentNumber":"KI-125-25","Children":[{"Number":"JI-656-09","Name":"Word Service Area","ParentNumber":"PP-321-23","Children":[]},{"Number":"ZZ-654-66","Name":"Chicken Service Area2","ParentNumber":"WW-125-23","Children":[]}]},{"Number":"SS-001-99","Name":"Bye Service Area","ParentNumber":"WW-565-25","Children":[{"Number":"JI-898-09","Name":"Pickle Service Area","ParentNumber":"LL-666-23","Children":[]},{"Number":"ZZ-493-66","Name":"Cheese Service Area2","ParentNumber":"QZ-852-23","Children":[]}]}]}]},{"Number":"QQ-542-10","Name":"Keep it Service Area","ParentNumber":"KI-125-25","Children":[]}]}}');
-
-$(document).ready(function() {
-    $('.tree').simpleTreePicker( {
-        "tree": stuff.Root
-    } );
-});
