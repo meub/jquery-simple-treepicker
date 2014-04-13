@@ -1,10 +1,9 @@
 /*! $.simpleTreePicker JS
- @version 1.0.0
+ @version 1.1.0
  @author Alex Meub
  @license WTFPL http://www.wtfpl.net/about/
 
  Ideas:
-    -Custom Callback
     -User can define keys: DisplayName, Number(ID), Children
         checkbox-{ID}
         label-{ID}
@@ -13,20 +12,18 @@
         Warn if duplicate
     -Angular Directive
 
-
  */
-
 
 ;(function ( $, window, document, undefined ) {
 
     var pluginName = "simpleTreePicker",
-    // the name of using in .data()
+    // The Name of Using in .data()
         dataPlugin = "plugin_" + pluginName,
-    // default options
+    // Default Options
         defaults = {
-            tree: {}
+            tree: {},
+            onclick: null
         };
-
 
     // The actual plugin constructor
     var Plugin = function ( element ) {
@@ -37,30 +34,21 @@
 
         init: function ( options ) {
 
-            // extend options
+            // Extend Options
             $.extend( this.options, options );
-            var data = this.options["tree"];
-
+            var data = this.options["tree"],
+                onclick = this.options["onclick"];
             // Build the UL Tree
             // Need to refactor, duplicate code in buildSubTree
 
             var buildTree = function(data) {
-                var i = 0,
-                    t = '<ul class="simple-tree">',
+                var html = '<ul class="simple-tree">',
                     result;
-                t += '<li class="tree-node" id="leaf-' + data.Number + '">';
-                if (data.Children && data.Children.length)
-                    t += '<ins class="tree-icon right-caret" id="icon-' + i + '"></ins>';
-                else
-                    t += '<ins class="tree-icon no-caret"></ins>';
 
-                // Make this a template!
-                t += '<input type="checkbox" name="checkbox-' + data.Number + '" id="checkbox-' + data.Number + '"><label for="checkbox-' + data.Number + '" id="' + data.Number + '">' + data.Name + '</label>';
-                i++;
-                t += buildSubTree(data.Children, t, i);
-                t += "</li>";
-                t += "</ul>";
-                result = $(t);
+                html += buildSubTree([data], html);
+                html += "</li>";
+                html += "</ul>";
+                result = $(html);
 
                 // All click functionality in here
                 result.on('click', function(e) {
@@ -91,6 +79,11 @@
 
                         checkChildren($container, checked);
                         checkParent($container, checked);
+
+                        if( onclick ){
+                            onclick();
+                        }
+
                     }
                     // Don't prevent default, we want default checking functionality
                 });
@@ -98,7 +91,7 @@
             };
 
             // Build Subtree Recursively
-            var buildSubTree = function(obj, html, i, j) {
+            var buildSubTree = function(obj, html, i) {
                 if (!obj || !obj.length) return "";
                 var t = '<ul class="subtree" id="subtree-' + i + '">';
                 $(obj).each(function() {
@@ -150,7 +143,6 @@
                         indeterminateChildren = true;
                     }
                 });
-
                 // Set up conditions
                 var noSelectedChildren = !checkedChildren.length,
                     someSelectedChildren = checkedChildren.length && uncheckedChildren.length,

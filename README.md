@@ -1,15 +1,23 @@
-simpleTreePicker
-================
+# simpleTreePicker
 
-SimpleTreePicker is a jQuery plugin for creating nested tree controls. It uses the indeterminate state to show when parent areas have only some child areas selected.
+SimpleTreePicker is a jQuery plugin for creating tree selection controls. Some of its features include:
 
+ * No images or dependencies other than jQuery
+ * Clickable arrows for showing/hiding subtrees
+ * Use of indeterminate state for semi-selected subtrees
+ * Smart hierarchy logic for selecting parent/child nodes
 
-Usage
-=====
+![Tree Picker Preview](http://simpletreepicker.alexmeub.com/tree-preview.PNG)
 
-The plugin accepts a `tree` property that is JSON object representing your tree. For now you must use the `Number`, `Name` and `Children` keys. For example:
+You can find a live demo [here](http://simpletreepicker.alexmeub.com).
 
+## Usage
 
+First, include references to `jquery.simple-tree-picker.js` and `jquery.simple-tree-picker.css` in your page.
+
+Then, call the plugin on an element. You must specify a `tree` property that is an object representing your tree. For now you must use the `Number`, `Name` and `Children` keys: `Number` is the element ID, `Name` is the display name and `Children` is the array of child objects. For example:
+
+    var myTreeObject =
     {
         "Number": "KI-125-25",
         "Name": "Everything",
@@ -33,21 +41,29 @@ The plugin accepts a `tree` property that is JSON object representing your tree.
                 "Children": []
             }
         ]
-    }
+    };
 
-Methods
-====
+    $('.myTreeDiv').simpleTreePicker( {
+        "tree": myTreeObject
+    } );
 
-Retrieve the IDs of the selected areas:
+
+## Options
+
+ * `onclick` - You can optionally specify an onclick function
+
+## Other Methods
+
+### Retrieve the IDs of the selected areas:
 
     $(".tree").simpleTreePicker("val");
     //example output: ["SS-002-99", "ZZ-493-66"]
 
-Retrieve the display names of selected areas:
+### Retrieve the display names of selected areas:
 
     $(".tree").simpleTreePicker("display");
     //example output: ["Hello Service Area", "Yellow Service Area"]
 
-Select areas specific areas (accepts an array of area IDs):
+### Select specific areas (accepts an array of area IDs):
 
     $(".tree").simpleTreePicker("set", ["SS-002-99", "ZZ-493-66"]);

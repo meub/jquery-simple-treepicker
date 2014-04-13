@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="jQuery plugin for tree selection controls">
+    <meta name="author" content="Alex Meub">
+    <title>Simple Tree Picker</title>
+    <link rel='stylesheet' href='jquery.simple-tree-picker.css'>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:400,700' type='text/css'>
+
+    <style type="text/css">
+
+        /* Demo Styles */
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            position: relative;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            background-color: #eee;
+            position: relative;
+            font-family: 'Lato', sans-serif;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+        h3 { margin: 20px 0 5px 0 }
+        a,
+        a:visited,
+        a:hover {
+            color: inherit;
+            text-decoration: underline;
+        }
+        .container {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 600px;
+            color: #2d3a3f;
+            padding-top: 30px;
+        }
+        .box {
+            display: block;
+            background: #fff;
+            padding: 40px;
+            border-radius: 3px;
+            margin: 10px 5px;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+        }
+        .subtitle { text-align: center }
+        .tree {
+            overflow-y: scroll;
+            height: 265px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-bottom: 40px;
+        }
+        #selected {
+            display: table-row;
+            font-weight: bold;
+        }
+        p { margin-bottom: 10px }
+        p.sel { margin-bottom: 30px }
+
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="box">
+        <h1>Simple Tree Picker</h1>
+        <p class="subtitle" >A lightweight jQuery plugin for creating tree selection controls</p>
+
+        <h3>Features</h3>
+        <ul >
+            <li>No images or dependencies other than jQuery</li>
+            <li>Clickable arrows for showing/hiding subtrees</li>
+            <li>Use of indeterminate state for semi-selected subtrees</li>
+            <li>Smart hierarchy logic</li>
+        </ul>
+
+        <h3>Demo</h3>
+        <div class="tree"></div>
+        <p class="sel">Selected areas: <span id="selected">Nothing selected</span> </p>
+
+        <h3>More information</h3>
+        <p>Check out the <a href="https://github.com/meub/simpleTreePicker">GitHub repository</a> for more information.</p>
+
+        <footer>
+            <p>Made by <a href="http://alexmeub.com/">Alex Meub</a></p>
+        </footer>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="jquery.simple-tree-picker.js"></script>
+<script>
+
+    var demoTreeData = JSON.parse('{"Number":"KI-125-25","Name":"All","Children":[{"Number":"WA-775-99","Name":"Main House","Children":[{"Number":"JI-105-09","Name":"Downstairs","Children":[]},{"Number":"TR-883-66","Name":"Upstairs","Children":[{"Number":"SS-002-99","Name":"Bedrooms","Children":[{"Number":"JI-656-09","Name":"Master Bedroom","Children":[]},{"Number":"ZZ-654-66","Name":"Guest Bedroom","Children":[]}]},{"Number":"SS-001-99","Name":"Other Rooms","Children":[{"Number":"JI-898-09","Name":"Great Room","Children":[]},{"Number":"ZZ-493-66","Name":"Bonus Room","Children":[]}]}]}]},{"Number":"QQ-542-10","Name":"Garage","Children":[]}]}');
+
+    $(document).ready(function() {
+
+        // Initialize Simple Tree Picker
+        // Pass it a callback to update the view
+        $('.tree').simpleTreePicker( {
+            "tree": demoTreeData,
+            "callback": function(){
+                var selected = $(".tree").simpleTreePicker("display");
+                $("#selected").html( !!selected.length ? selected.toString().replace(/,/g,', ') : "Nothing Selected" );
+            }
+        } );
+    });
+
+</script>
+
+</body>
+</html>
