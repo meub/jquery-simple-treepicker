@@ -2,17 +2,7 @@
  @version 1.1.0
  @author Alex Meub
  @license WTFPL http://www.wtfpl.net/about/
-
- Ideas:
-    -User can define keys: DisplayName, Number(ID), Children
-        checkbox-{ID}
-        label-{ID}
-        DisplayName
-    -Check if Any Duplicate IDs( error out)
-        Warn if duplicate
-    -Angular Directive
-
- */
+*/
 
 ;(function ( $, window, document, undefined ) {
 

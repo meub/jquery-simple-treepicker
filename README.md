@@ -1,6 +1,6 @@
-# simpleTreePicker
+# jQuery Simple TreePicker
 
-SimpleTreePicker is a jQuery plugin for creating tree selection controls. Some of its features include:
+Simple TreePicker is a jQuery plugin for creating tree selection controls. Some of its features include:
 
  * No images or dependencies other than jQuery
  * Clickable arrows for showing/hiding subtrees
