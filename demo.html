@@ -46,7 +46,7 @@
         .container {
             text-align: left;
             margin: 0 auto;
-            max-width: 600px;
+            max-width: 700px;
             color: #2d3a3f;
             padding-top: 30px;
         }
@@ -76,6 +76,9 @@
 </head>
 
 <body>
+<!-- Obligatory github ribbon -->
+<a href="https://github.com/meub"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
 <div class="container">
     <div class="box">
         <h1>Simple Tree Picker</h1>
@@ -92,10 +95,10 @@
         <h3>Demo</h3>
         <div class="tree"></div>
         <p class="sel">Selected areas: <span id="selected">Nothing selected</span> </p>
-
-        <h3>More information</h3>
+		
+		<h3>More information</h3>
         <p>Check out the <a href="https://github.com/meub/simpleTreePicker">GitHub repository</a> for more information.</p>
-
+		
         <footer>
             <p>Made by <a href="http://alexmeub.com/">Alex Meub</a></p>
         </footer>
@@ -105,22 +108,23 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="jquery.simple-tree-picker.js"></script>
 <script>
-
+	// Create tree object
     var demoTreeData = JSON.parse('{"Number":"KI-125-25","Name":"All","Children":[{"Number":"WA-775-99","Name":"Main House","Children":[{"Number":"JI-105-09","Name":"Downstairs","Children":[]},{"Number":"TR-883-66","Name":"Upstairs","Children":[{"Number":"SS-002-99","Name":"Bedrooms","Children":[{"Number":"JI-656-09","Name":"Master Bedroom","Children":[]},{"Number":"ZZ-654-66","Name":"Guest Bedroom","Children":[]}]},{"Number":"SS-001-99","Name":"Other Rooms","Children":[{"Number":"JI-898-09","Name":"Great Room","Children":[]},{"Number":"ZZ-493-66","Name":"Bonus Room","Children":[]}]}]}]},{"Number":"QQ-542-10","Name":"Garage","Children":[]}]}');
 
-    $(document).ready(function() {
-
-        // Initialize Simple Tree Picker
-        // Pass it a callback to update the view
-        $('.tree').simpleTreePicker( {
-            "tree": demoTreeData,
-            "callback": function(){
-                var selected = $(".tree").simpleTreePicker("display");
-                $("#selected").html( !!selected.length ? selected.toString().replace(/,/g,', ') : "Nothing Selected" );
-            }
-        } );
-    });
-
+	// Initialize Simple Tree Picker
+	// Pass it an onclick function to update the view
+	// Pass it an initial selected state
+	$('.tree').simpleTreePicker( {
+		"tree": demoTreeData,
+		"onclick": function(){		
+			var selected = $(".tree").simpleTreePicker("display");
+			$("#selected").html( !!selected.length ? selected.toString().replace(/,/g,', ') : "Nothing Selected" );
+		},
+		"selected" : [ "ZZ-654-66","SS-001-99" ]
+	});
+	
+	// Update view with initial state (onclick isn't called for initial selection)
+	$("#selected").html( $(".tree").simpleTreePicker("display").toString().replace(/,/g,', ') );		
 </script>
 
 </body>

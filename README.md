@@ -50,7 +50,24 @@ Then, call the plugin on an element. You must specify a `tree` property that is 
 
 ## Options
 
- * `onclick` - You can optionally specify an onclick function
+### Onclick
+
+You can optionally specify an `onclick` function on initialization
+
+    $('.myTreeDiv').simpleTreePicker( {
+        "tree": myTreeObject,
+		"onclick":function(){alert("clicked");}
+    } );
+	
+### Selected
+
+You can optionally specify a default tree selection on initialization
+	
+	$('.myTreeDiv').simpleTreePicker( {
+        "tree": myTreeObject,
+		"selected": ["JI-105-09", "QQ-542-10"]
+    } );
+ 
 
 ## Other Methods
 

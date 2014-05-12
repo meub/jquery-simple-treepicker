@@ -37,21 +37,22 @@
             // Extend Options
             $.extend( this.options, options );
             var data = this.options["tree"],
-                onclick = this.options["onclick"];
+                onclick = this.options["onclick"],
+                selected = this.options["selected"];
             // Build the UL Tree
             // Need to refactor, duplicate code in buildSubTree
 
             var buildTree = function(data) {
-                var html = '<ul class="simple-tree">',
+                var html = '<div class="simple-tree">',
                     result;
 
-                html += buildSubTree([data], html);
-                html += "</li>";
-                html += "</ul>";
+                html += buildSubTree([data], html, 0);
+                html += "</div>";
                 result = $(html);
 
                 // All click functionality in here
-                result.on('click', function(e) {
+                result.on('click', function(event) {
+
                     var tagName = event.target.nodeName,
                         classes = event.target.classList;
 
@@ -83,7 +84,6 @@
                         if( onclick ){
                             onclick();
                         }
-
                     }
                     // Don't prevent default, we want default checking functionality
                 });
@@ -96,7 +96,7 @@
                 var t = '<ul class="subtree" id="subtree-' + i + '">';
                 $(obj).each(function() {
                     t += '<li class="tree-node" id="leaf-' + this.Number + '">';
-                    if (this.Children.length) t += '<ins class="tree-icon right-down-caret" id="icon-' + i + '"></ins>';
+                    if (this.Children && this.Children.length) t += '<ins class="tree-icon right-down-caret" id="icon-' + i + '"></ins>';
                     else t += '<ins class="tree-icon no-caret" id="icon-' + i + '"></ins>';
                     t += '<input type="checkbox" name="checkbox-' + this.Number + '" id="checkbox-' + this.Number + '"><label for="checkbox-' + this.Number + '" id="' + this.Number + '">' + this.Name + '</label>';
                     i++;
@@ -104,6 +104,7 @@
                     t += "</li>";
                 });
                 t += '</ul>';
+				
                 return t;
             };
 
@@ -174,6 +175,18 @@
             };
 
             $(this.element).append(buildTree(data));
+
+            // Go through "selected" locations and select them
+            if( selected && selected.length ){
+               for( var i =0; i< selected.length; i++ ) {
+                  var $checkbox = $('#checkbox-' + selected[i]),
+                      $container = $checkbox.closest('li');
+
+                  $checkbox.prop("checked", true);
+                  checkChildren($container, true);
+                  checkParent($container, true);
+               }
+            }
         },
         // Public Clear
         clear: function () {
@@ -221,10 +234,14 @@
 
             $(valuesArray).each(function(){
 
-                var check = $(el).find('#checkbox-' + this);
-                if( check )
-                    $(el).find('#checkbox-' + this).click();
-                else
+                var $check = $(el).find('#checkbox-' + this);
+                if( $check ) {					  					
+					$container = $check.closest('li');
+					$checkbox.prop("checked", true);
+					checkChildren($container, true);
+					checkParent($container, true);				   
+				}                                
+				else
                     return false;
             });
             return true;
@@ -270,3 +287,4 @@
     };
 
 }(jQuery, window, document));
+
