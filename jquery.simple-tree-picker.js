@@ -12,7 +12,8 @@
     // Default Options
         defaults = {
             tree: {},
-            onclick: null
+            onclick: null,
+            name : 'tree-' + String(Math.floor(Math.random() * 100) + 1)
         };
 
     // The actual plugin constructor
@@ -28,12 +29,13 @@
             $.extend( this.options, options );
             var data = this.options["tree"],
                 onclick = this.options["onclick"],
-                selected = this.options["selected"];
+                selected = this.options["selected"],
+                elementName = this.options["name"];
             // Build the UL Tree
             // Need to refactor, duplicate code in buildSubTree
 
             var buildTree = function(data) {
-                var html = '<div class="simple-tree">',
+                var html = '<div class="simple-tree '+ elementName +'">',
                     result;
 
                 html += buildSubTree([data], html, 0);

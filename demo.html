@@ -120,7 +120,8 @@
 			var selected = $(".tree").simpleTreePicker("display");
 			$("#selected").html( !!selected.length ? selected.toString().replace(/,/g,', ') : "Nothing Selected" );
 		},
-		"selected" : [ "ZZ-654-66","SS-001-99" ]
+		"selected" : [ "ZZ-654-66","SS-001-99" ],
+        "name" : "room-selection-tree"
 	});
 	
 	// Update view with initial state (onclick isn't called for initial selection)

@@ -68,6 +68,15 @@ You can optionally specify a default tree selection on initialization
 		"selected": ["JI-105-09", "QQ-542-10"]
     } );
  
+### Name
+
+You can optionally specify a name of the tree that will be applied as a class
+
+	$('.myTreeDiv').simpleTreePicker( {
+        "tree": myTreeObject,
+		"name": "room-selection-tree"
+    } );
+
 
 ## Other Methods
 
